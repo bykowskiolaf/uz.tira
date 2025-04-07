@@ -43,8 +43,22 @@ public class BoardTest {
 
         Set<Position> attacked = queen.getAttackedSquares(board);
 
-        assertThat(attacked).contains(new Position(99, 0), new Position(0, 99), new Position(99, 99));
-        assertThat(attacked).doesNotContain(new Position(2, 1), new Position(1, 2));
+        assertThat(attacked).contains(
+                // Bottom right corner
+                new Position(99, 0),
+
+                // Top left corner
+                new Position(0, 99),
+
+                // Top right corner
+                new Position(99, 99)
+        );
+
+        assertThat(attacked).doesNotContain(
+                // Random positions that should not be attacked
+                new Position(2, 1),
+                new Position(1, 2)
+        );
     }
 
     @Test
@@ -55,7 +69,12 @@ public class BoardTest {
 
         Set<Position> attacked = rook.getAttackedSquares(board);
 
-        assertThat(attacked).contains(new Position(99, 0), new Position(0, 99));
+
+        assertThat(attacked).contains(
+                // Horizontal and vertical attacks
+                new Position(99, 0),
+                new Position(0, 99)
+        );
         assertThat(attacked).doesNotContain(new Position(2, 1), new Position(1, 2));
     }
 
@@ -67,7 +86,10 @@ public class BoardTest {
 
         Set<Position> attacked = bishop.getAttackedSquares(board);
 
+        // Check diagonal attacks
         assertThat(attacked).contains(new Position(99, 99));
+
+        // Check that it does not attack non-diagonal positions
         assertThat(attacked).doesNotContain(new Position(2, 1), new Position(1, 2));
     }
 
@@ -80,7 +102,10 @@ public class BoardTest {
 
         Set<Position> attacked = queen.getAttackedSquares(board);
 
+        // Check that the obstacle is included in the attacked squares
         assertThat(attacked).contains(new Position(99, 0), new Position(0, 99), new Position(1, 1));
+
+        // Check that the queen does not attack positions beyond the obstacle
         assertThat(attacked).doesNotContain(new Position(50, 50), new Position(2, 2));
     }
 

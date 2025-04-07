@@ -20,6 +20,7 @@ class BishopTest {
         Set<Position> attacked = bishop.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Diagonal bottom left, to top right attacks
                 new Position(0, 0),
                 new Position(1, 1),
                 new Position(2, 2),
@@ -27,6 +28,8 @@ class BishopTest {
                 new Position(5, 5),
                 new Position(6, 6),
                 new Position(7, 7),
+
+                // Diagonal top left, to bottom right attacks
                 new Position(0, 6),
                 new Position(1, 5),
                 new Position(2, 4),
@@ -44,13 +47,17 @@ class BishopTest {
         board.addObstacle(new Position(5, 5));
 
         Set<Position> attacked = bishop.getAttackedSquares(board);
-        
+
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Diagonal bottom left, to top right attacks
                 new Position(0, 0),
                 new Position(1, 1),
                 new Position(2, 2),
                 new Position(4, 4),
+                // Obstacle stops attack, but is included
                 new Position(5, 5),
+
+                // Diagonal top left, to bottom right attacks
                 new Position(0, 6),
                 new Position(1, 5),
                 new Position(2, 4),

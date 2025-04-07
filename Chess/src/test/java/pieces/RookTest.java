@@ -20,6 +20,7 @@ class RookTest {
         Set<Position> attacked = rook.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Horizontal
                 new Position(0, 3),
                 new Position(1, 3),
                 new Position(2, 3),
@@ -27,6 +28,8 @@ class RookTest {
                 new Position(5, 3),
                 new Position(6, 3),
                 new Position(7, 3),
+
+                // Vertical
                 new Position(3, 0),
                 new Position(3, 1),
                 new Position(3, 2),
@@ -49,6 +52,7 @@ class RookTest {
         Set<Position> attacked = rook.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Horizontal
                 new Position(0, 3),
                 new Position(1, 3),
                 new Position(2, 3),
@@ -56,10 +60,13 @@ class RookTest {
                 new Position(5, 3),
                 new Position(6, 3),
                 new Position(7, 3),
+
+                // Vertical
                 new Position(3, 0),
                 new Position(3, 1),
                 new Position(3, 2),
                 new Position(3, 4),
+                // Obstacle stops attack, but is included
                 new Position(3, 5)
         );
 

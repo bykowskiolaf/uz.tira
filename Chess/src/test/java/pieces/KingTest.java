@@ -20,8 +20,15 @@ class KingTest {
         Set<Position> attacked = king.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // All adjacent squares
+
+                // Top row, above the king
                 new Position(2, 4), new Position(3, 4), new Position(4, 4),
+
+                // Middle row, same row as the king, except the king's position
                 new Position(2, 3), new Position(4, 3),
+
+                // Bottom row, below the king
                 new Position(2, 2), new Position(3, 2), new Position(4, 2)
         );
     }
@@ -35,6 +42,7 @@ class KingTest {
         Set<Position> attacked = king.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Only the positions within bounds
                 new Position(0, 1),
                 new Position(1, 0),
                 new Position(1, 1)

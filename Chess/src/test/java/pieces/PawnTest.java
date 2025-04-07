@@ -20,7 +20,10 @@ public class PawnTest {
         Set<Position> attacked = pawn.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Top right
                 new Position(4, 4),
+
+                // Top left
                 new Position(2, 4)
         );
     }
@@ -34,6 +37,7 @@ public class PawnTest {
         Set<Position> attacked = pawn.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Only the positions within bounds, top right
                 new Position(1, 1)
         );
     }

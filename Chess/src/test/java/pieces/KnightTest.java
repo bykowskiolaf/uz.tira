@@ -20,9 +20,16 @@ public class KnightTest {
         Set<Position> attacked = knight.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Moves to the top
                 new Position(2, 5), new Position(4, 5),
+
+                // Moves to top right and left
                 new Position(1, 4), new Position(5, 4),
+
+                // Moves to the bottom right and left
                 new Position(1, 2), new Position(5, 2),
+
+                // Moves to the bottom
                 new Position(2, 1), new Position(4, 1)
         );
     }
@@ -36,7 +43,10 @@ public class KnightTest {
         Set<Position> attacked = knight.getAttackedSquares(board);
 
         assertThat(attacked).containsExactlyInAnyOrder(
+                // Move to the top
                 new Position(1, 2),
+
+                // Move to the top right
                 new Position(2, 1)
         );
     }
